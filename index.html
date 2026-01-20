@@ -102,7 +102,6 @@ footer {
   opacity: 0.7;
 }
 
-/* ▼ ここから送信中アニメーション ▼ */
 .loading {
   display: none;
   margin-top: 20px;
@@ -125,7 +124,8 @@ footer {
 @keyframes spin {
   to { transform: rotate(360deg); }
 }
-    * {
+
+* {
   box-sizing: border-box;
 }
 
@@ -133,76 +133,70 @@ footer {
   max-width: 600px;
   margin: 0 auto;
 }
-
 </style>
-
 </head>
+
 <body>
 
-  <div class="hero">
-    <h1>福岡市立元岡中学校<br>定期演奏会</h1>
-    <p>No music, no life</p>
-    <p>Cantabile</p>
-  </div>
+<div class="hero">
+  <h1>福岡市立元岡中学校<br>定期演奏会</h1>
+  <p>No music, no life</p>
+  <p>Cantabile</p>
+</div>
 
-  <section class="about">
-    <h2>演奏会について(ABOUT THE CONCERT)</h2>
-    <p>
-      本日は定期演奏会にご来場いただき、誠にありがとうございました。<br>
-      皆さまの温かい拍手と応援が、私たちの音楽活動の大きな励みとなっています。<br><br>
-      今後の活動向上のため、ぜひアンケートにご協力ください。
-    </p>
-  </section>
+<section class="about">
+  <h2>演奏会について(ABOUT THE CONCERT)</h2>
+  <p>
+    本日は定期演奏会にご来場いただき、誠にありがとうございました。<br>
+    皆さまの温かい拍手と応援が、私たちの音楽活動の大きな励みとなっています。<br><br>
+    今後の活動向上のため、ぜひアンケートにご協力ください。
+  </p>
+</section>
+
+<section id="formArea">
+  <h2>アンケート(SURVEY)</h2>
 
   <form id="surveyForm">
-    <h2>アンケート(SURVEY)</h2>
+    <p style="opacity:0.8;">※ 以下の項目にご協力ください / Please answer the following questions.</p>
 
-      <p style="opacity:0.8;">※ 以下の項目にご協力ください / Please answer the following questions.</p>
+    <label for="age">年代 / Age Group</label>
+    <select id="age" required>
+      <option value="">選択してください</option>
+      <option>10代</option>
+      <option>20代</option>
+      <option>30代</option>
+      <option>40代</option>
+      <option>50代以上</option>
+    </select>
 
-      <label for="age">年代 / Age Group</label>
-      <select id="age" required>
-        <option value="">選択してください</option>
-        <option>10代</option>
-        <option>20代</option>
-        <option>30代</option>
-        <option>40代</option>
-        <option>50代以上</option>
-      </select>
+    <label for="satisfaction">演奏会の満足度 / Satisfaction with the concert</label>
+    <select id="satisfaction" required>
+      <option value="">選択してください</option>
+      <option>とても満足</option>
+      <option>満足</option>
+      <option>普通</option>
+      <option>やや不満</option>
+      <option>不満</option>
+    </select>
 
-      <label for="satisfaction">演奏会の満足度 / Satisfaction with the concert</label>
-      <select id="satisfaction" required>
-        <option value="">選択してください</option>
-        <option>とても満足</option>
-        <option>満足</option>
-        <option>普通</option>
-        <option>やや不満</option>
-        <option>不満</option>
-      </select>
+    <label for="comment">ご感想・ご意見 / Comments or Feedback</label>
+    <textarea id="comment" rows="5"></textarea>
 
-      <label for="comment">ご感想・ご意見 / Comments or Feedback</label>
-      <textarea id="comment" rows="5" placeholder="自由にご記入ください / Please write freely"></textarea>
+    <label for="source">本日の演奏会は何でお知りになりましたか？</label>
+    <select id="source" required>
+      <option value="">選択してください</option>
+      <option>学校からの案内</option>
+      <option>団員からの案内</option>
+      <option>ポスター・チラシ</option>
+      <option>知人・家族から</option>
+      <option>学校・団体のWebサイト</option>
+      <option>SNS</option>
+      <option>その他</option>
+    </select>
 
-      <label for="source">
-        本日の演奏会は何でお知りになりましたか？<br>
-        <span style="font-weight:normal;">How did you hear about this concert?</span>
-      </label>
-      <select id="source" required>
-        <option value="">選択してください / Please select</option>
-        <option>学校からの案内</option>
-        <option>団員からの案内</option>
-        <option>ポスター・チラシ</option>
-        <option>知人・家族から</option>
-        <option>学校・団体のWebサイト</option>
-        <option>SNS</option>
-        <option>その他</option>
-      </select>
-
-      <label for="role">
-      あなたのお立場を教えてください<br>
-      <span style="font-weight:normal;">Please tell us your role</span>
-    </label>
+    <label for="role">あなたのお立場を教えてください</label>
     <select id="role" required>
-      <option value="">選択してください / Please select</option>
+      <option value="">選択してください</option>
       <option>生徒</option>
       <option>保護者</option>
       <option>教職員</option>
@@ -210,35 +204,33 @@ footer {
       <option>地域の方</option>
       <option>その他</option>
     </select>
-      
-      <label for="area">
-        お住まいの地域<br>
-        <span style="font-weight:normal;">Area where you live</span>
-      </label>
-      <select id="area" required>
-        <option value="">選択してください / Please select</option>
-        <option>福岡市西区</option>
-        <option>福岡市内（西区以外）</option>
-        <option>福岡市外（福岡県内）</option>
-        <option>福岡県外</option>
-      </select>
+
+    <label for="area">お住まいの地域</label>
+    <select id="area" required>
+      <option value="">選択してください</option>
+      <option>福岡市西区</option>
+      <option>福岡市内（西区以外）</option>
+      <option>福岡市外（福岡県内）</option>
+      <option>福岡県外</option>
+    </select>
 
     <button type="submit">回答を送信 / SEND</button>
 
-<div class="loading" id="loading">
-  <span class="spinner"></span> 送信中です…
-</div>
-
-    <div class="complete" id="completeMessage">
-      <p>ご回答ありがとうございました。</p>
-      <p>回答は送信されました。</p>
-      <p>このページを閉じて、元の画面へお戻りください。</p>
+    <div class="loading" id="loading">
+      <span class="spinner"></span> 送信中です…
     </div>
-  </section>
+  </form>
 
-  <footer>
-    <p>© 福岡市立元岡中学校 吹奏楽部（ザワプランニング）</p>
-  </footer>
+  <div class="complete" id="completeMessage">
+    <p>ご回答ありがとうございました。</p>
+    <p>回答は送信されました。</p>
+    <p>このページを閉じて、元の画面へお戻りください。</p>
+  </div>
+</section>
+
+<footer>
+  <p>© 福岡市立元岡中学校 吹奏楽部（ザワプランニング）</p>
+</footer>
 
 <script>
 const form = document.getElementById("surveyForm");
@@ -250,35 +242,26 @@ form.addEventListener("submit", function(e) {
 
   const button = form.querySelector("button");
   button.disabled = true;
-  loading.style.display = "block"; // ★追加
+  loading.style.display = "block";
 
   const data = {
-    age: document.getElementById("age").value,
-    satisfaction: document.getElementById("satisfaction").value,
-    comment: document.getElementById("comment").value,
-    source: document.getElementById("source").value,
-    area: document.getElementById("area").value,
-    role: document.getElementById("role").value
+    age: age.value,
+    satisfaction: satisfaction.value,
+    comment: comment.value,
+    source: source.value,
+    area: area.value,
+    role: role.value
   };
 
   fetch("https://script.google.com/macros/s/AKfycbyrbazpfo2jzMlBEKsDo4URiXe-mDs1UST-WBQBTyEfZJPLSOGNRWiadwNuiFXPKcLg/exec", {
     method: "POST",
     mode: "no-cors",
-    headers: {
-      "Content-Type": "application/json"
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
-  })
-  .then(() => {
-    loading.style.display = "none";   // ★追加
+  }).then(() => {
+    loading.style.display = "none";
     form.style.display = "none";
     complete.style.display = "block";
-  })
-  .catch(err => {
-    loading.style.display = "none";   // ★追加
-    alert("送信に失敗しました");
-    console.error(err);
-    button.disabled = false;
   });
 });
 </script>
