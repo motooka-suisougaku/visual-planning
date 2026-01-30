@@ -247,6 +247,7 @@ form.addEventListener("submit", function(e) {
   loading.style.display = "block";
 
   const data = {
+    name: document.getElementById("name").value,
     age: document.getElementById("age").value,
     satisfaction: document.getElementById("satisfaction").value,
     comment: document.getElementById("comment").value,
