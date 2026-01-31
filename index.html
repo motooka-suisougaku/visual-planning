@@ -246,6 +246,10 @@ form.addEventListener("submit", function(e) {
   form.querySelector("button").disabled = true;
   loading.style.display = "block";
 
+  if (!navigator.onLine) {
+    alert("インターネットに接続されていません。\n通信環境をご確認ください。");
+    return;
+
   const data = {
     name: document.getElementById("name").value,
     age: document.getElementById("age").value,
