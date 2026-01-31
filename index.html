@@ -235,7 +235,7 @@
     <p>© 福岡市立元岡中学校 吹奏楽部</p>
   </footer>
 
-<script>
+  <script>
 const form = document.getElementById("surveyForm");
 const loading = document.getElementById("loading");
 const complete = document.getElementById("completeMessage");
@@ -255,30 +255,34 @@ form.addEventListener("submit", function(e) {
     area: document.getElementById("area").value,
     role: document.getElementById("role").value
   };
-fetch("https://script.google.com/macros/s/AKfycbzAd6JzE6Iw5zvo57-IWQchI7MWlVEQuGFZuMXCqr64AWg_9p4_wPmkbuBnvj5YtPwK/exec", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data)
-})
-.then(() => {
-  // ★ 通信が成立した時点で成功扱い
-  loading.style.display = "none";
-  form.style.display = "none";
-  complete.style.display = "block";
 
-  complete.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
+  fetch("https://script.google.com/macros/s/AKfycbzAd6JzE6Iw5zvo57-IWQchI7MWlVEQuGFZuMXCqr64AWg_9p4_wPmkbuBnvj5YtPwK/exec", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data)
+  })
+  .then(res => res.text())   // ★重要
+  .then(text => {
+    if (text !== "ok") {
+      throw new Error("GAS returned: " + text);
+    }
+
+    loading.style.display = "none";
+    form.style.display = "none";
+    complete.style.display = "block";
+
+    complete.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  })
+  .catch(err => {
+    loading.style.display = "none";
+    alert("送信に失敗しました");
+    console.error(err);
+    form.querySelector("button").disabled = false;
   });
-})
-.catch(err => {
-  loading.style.display = "none";
-  alert("送信に失敗しました（通信エラー）");
-  console.error(err);
-  form.querySelector("button").disabled = false;
 });
-});
-
 </script>
 
 </body>
