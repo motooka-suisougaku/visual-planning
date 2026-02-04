@@ -160,7 +160,7 @@
 />
   </div>
 
-  <section class="about">
+  <section class="about fade-up">
     <h2>演奏会について(ABOUT THE CONCERT)</h2>
     <p>
       本日は定期演奏会にご来場いただき、誠にありがとうございました。<br>
@@ -305,6 +305,20 @@ fetch("https://script.google.com/macros/s/AKfycbz1jfpK1_ryITjTeS3V-EllEzMrI-yxQC
   form.querySelector("button").disabled = false;
 });
 });
+    const targets = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.2
+});
+
+targets.forEach(target => observer.observe(target));
 </script>
 
 </body>
