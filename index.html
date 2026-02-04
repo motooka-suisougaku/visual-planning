@@ -144,6 +144,24 @@
   opacity: 1;
   transform: translateY(0);
 }
+    .school-logo {
+  width: 160px;
+  margin-top: 20px;
+  opacity: 0;
+  animation: logoFade 1.2s ease-out forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes logoFade {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(0);
+  }
+}
   </style>
 </head>
 <body>
