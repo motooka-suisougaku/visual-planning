@@ -169,6 +169,23 @@
 .delay-2 {
   transition-delay: 0.3s;
 }
+    .scroll-indicator {
+  margin-top: 40px;
+  font-size: 24px;
+  opacity: 0.7;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+    button {
+  border-radius: 6px;
+}
+    .complete {
+  animation: fadeIn 0.8s ease;
+}
   </style>
 </head>
 <body>
@@ -183,6 +200,9 @@
   class="school-logo"
   referrerpolicy="no-referrer"
 />
+    
+  <div class="scroll-indicator">▼</div>
+    
   </div>
 
   <section class="about">
