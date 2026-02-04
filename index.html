@@ -234,6 +234,9 @@
   animation: fadeInUp 1s ease forwards;
   animation-delay: 1.6s;
 }
+    .scroll-indicator {
+  pointer-events: none;
+}
   </style>
 </head>
 <body>
@@ -252,8 +255,7 @@
   class="school-logo"
   referrerpolicy="no-referrer"
 />
-    
-<a href="#formArea" class="scroll-indicator" aria-label="アンケートへ移動">▼</a>
+    <div class="scroll-indicator" aria-hidden="true">▼</div>
     
   </div>
 
