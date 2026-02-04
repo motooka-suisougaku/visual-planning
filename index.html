@@ -232,11 +232,23 @@
   position: sticky;
   bottom: 10px;
 }
-    .hero-note {
+.hero-note {
   margin-top: 15px;
   opacity: 0;
-  animation: fadeInUp 1s ease forwards;
-  animation-delay: 1.8s;
+  transform: translateY(15px);
+  animation: heroNoteFade 1.2s ease forwards;
+  animation-delay: 2.2s; /* ←ここが重要 */
+}
+
+@keyframes heroNoteFade {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
   </style>
 </head>
