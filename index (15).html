@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アンケート - 元岡中学校吹奏楽部 定期演奏会 2026</title>
+<meta name="description" content="福岡市立元岡中学校 吹奏楽部 定期演奏会アンケート">
+<meta property="og:title" content="福岡市立元岡中学校 定期演奏会 アンケート">
+<meta property="og:description" content="定期演奏会にご来場いただいた皆さまのご感想をお聞かせください。">
+<meta property="og:image" content="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/competition.jpg">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  background: #f0f4f8;
+  color: #1e293b;
+  line-height: 1.8;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== ナビゲーションバー ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  z-index: 1000;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+}
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #475569;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: #1e293b;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(10px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* ===== HERO SECTION ===== */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(240, 244, 248, 0.2)),
+    url("https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/competition.jpg")
+    center center / cover no-repeat;
+  z-index: -1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 24px;
+  max-width: 900px;
+}
+
+.logo-badge {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 32px;
+  opacity: 0;
+  animation: fadeIn 1s ease 0.3s forwards;
+}
+
+.logo-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero-title {
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.6s forwards;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.hero-subtitle {
+  font-size: 16px;
+  color: #475569;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  opacity: 0;
+  animation: fadeInUp 1s ease 0.9s forwards;
+}
+
+.hero-date {
+  font-size: 28px;
+  font-weight: 300;
+  letter-spacing: 4px;
+  color: #ef4444;
+  opacity: 0;
+  animation: fadeInUp 1s ease 1.2s forwards;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeIn 1s ease 1.5s forwards, bounce 2s ease infinite 2s;
+}
+
+.scroll-indicator span {
+  display: block;
+  width: 24px;
+  height: 40px;
+  border: 2px solid rgba(30, 41, 59, 0.4);
+  border-radius: 12px;
+  position: relative;
+}
+
+.scroll-indicator span::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 8px;
+  background: #2563eb;
+  border-radius: 2px;
+  animation: scroll 2s ease infinite;
+}
+
+@keyframes scroll {
+  0%, 100% { opacity: 0; top: 8px; }
+  50% { opacity: 1; top: 16px; }
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  from {
+    transform: translateY(20px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+/* ===== MAIN CONTENT ===== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.content-wrapper {
+  position: relative;
+  background: linear-gradient(180deg, 
+    #fef9e7 0%,
+    #fef5e7 10%,
+    #fdebd0 20%,
+    #fce4d6 30%,
+    #fadbd8 40%,
+    #f8d7da 50%,
+    #e8daef 60%,
+    #d4e6f1 70%,
+    #d1f2eb 80%,
+    #fef9e7 90%,
+    #fef9e7 100%
+  );
+  z-index: 1;
+  min-height: 100vh;
+  padding-bottom: 200px;
+}
+
+section {
+  padding: 100px 0;
+  opacity: 0;
+  transform: translateY(80px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.section-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #7c3aed;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.section-title {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  color: #1e293b;
+}
+
+.section-description {
+  font-size: 16px;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ===== SURVEY SECTION ===== */
+.survey-intro {
+  background: linear-gradient(135deg, #ddd6fe, #ede9fe);
+  border: 2px solid #8b5cf6;
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+  margin-bottom: 48px;
+}
+
+.survey-intro p {
+  font-size: 16px;
+  color: #1e293b;
+  line-height: 1.8;
+  margin-bottom: 12px;
+}
+
+.survey-form {
+  background: linear-gradient(135deg, #fef3c7, #ffffff);
+  border: 2px solid #fbbf24;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.form-note {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 32px;
+  padding: 16px;
+  background: rgba(251, 191, 36, 0.1);
+  border-radius: 8px;
+  border-left: 4px solid #fbbf24;
+}
+
+.form-group {
+  margin-bottom: 32px;
+}
+
+.form-label {
+  display: block;
+  font-weight: 600;
+  font-size: 16px;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.form-sublabel {
+  display: block;
+  font-weight: 400;
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 16px;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #1e293b;
+  transition: all 0.3s ease;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #fbbf24;
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.1);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 18px;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+  margin-top: 16px;
+}
+
+.submit-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139, 92, 246, 0.4);
+}
+
+.submit-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.loading {
+  display: none;
+  text-align: center;
+  margin-top: 24px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 3px solid #e2e8f0;
+  border-top: 3px solid #8b5cf6;
+  border-radius: 50%;
+  display: inline-block;
+  animation: spin 1s linear infinite;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.complete {
+  display: none;
+  text-align: center;
+  padding: 64px 32px;
+}
+
+.complete-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.complete p {
+  font-size: 18px;
+  color: #1e293b;
+  margin-bottom: 16px;
+  line-height: 1.8;
+}
+
+.submit-note {
+  font-size: 13px;
+  color: #64748b;
+  text-align: center;
+  margin-top: 16px;
+}
+
+/* ===== INFO GRID ===== */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.info-card {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #fbbf24;
+  border-radius: 20px;
+  padding: 32px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.info-title {
+  font-size: 14px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.info-content {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+}
+
+/* ===== PROGRAM SECTION ===== */
+.program-list {
+  display: grid;
+  gap: 32px;
+}
+
+.program-item {
+  background: linear-gradient(135deg, #fef3c7, #ffffff);
+  border-left: 6px solid #f59e0b;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+}
+
+.program-number {
+  font-size: 14px;
+  color: #ea580c;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+}
+
+.program-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+  color: #1e293b;
+  background: linear-gradient(90deg, #f59e0b, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.program-pieces {
+  list-style: none;
+  padding-left: 0;
+}
+
+.program-pieces li {
+  padding: 8px 0;
+  color: #475569;
+  font-size: 15px;
+  position: relative;
+  padding-left: 24px;
+}
+
+.program-pieces li::before {
+  content: '♪';
+  position: absolute;
+  left: 0;
+  color: #f59e0b;
+  font-size: 18px;
+}
+
+/* ===== CAST SECTION ===== */
+.cast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+}
+
+.guest-container {
+  display: flex;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.guest-card {
+  max-width: 100%;
+  width: 100%;
+}
+
+.guest-card::before {
+  content: '⭐';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 32px;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+.cast-card {
+  background: linear-gradient(135deg, #fef3c7, #fde68a, #fbbf24);
+  border: 3px solid #f59e0b;
+  border-radius: 24px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 16px 48px rgba(245, 158, 11, 0.5);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cast-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #fbbf24, #f59e0b, #ea580c, #f59e0b, #fbbf24);
+  background-size: 300% 300%;
+  border-radius: 24px;
+  z-index: -1;
+  animation: gradientRotate 4s ease infinite;
+}
+
+@keyframes gradientRotate {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.cast-card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(45deg);
+  animation: shine 3s ease-in-out infinite;
+  z-index: 0;
+}
+
+@keyframes shine {
+  0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+  100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+}
+
+.cast-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 24px 64px rgba(245, 158, 11, 0.6);
+}
+
+.cast-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0 auto 24px;
+  border: 6px solid #f59e0b;
+  box-shadow: 0 12px 32px rgba(245, 158, 11, 0.6), 
+              inset 0 0 20px rgba(255, 255, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.guest-card .cast-photo {
+  width: 240px;
+  height: 240px;
+}
+
+.cast-role {
+  font-size: 13px;
+  color: #92400e;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 12px;
+  font-weight: 800;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(146, 64, 14, 0.3);
+}
+
+.guest-card .cast-role {
+  color: #7c2d12;
+  font-size: 15px;
+  letter-spacing: 4px;
+}
+
+.cast-name {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #f59e0b, #ea580c, #d97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 4px 8px rgba(245, 158, 11, 0.3);
+  filter: drop-shadow(0 2px 4px rgba(245, 158, 11, 0.5));
+}
+
+.guest-card .cast-name {
+  font-size: 36px;
+}
+
+/* ===== TICKET SECTION ===== */
+.ticket-card {
+  background: linear-gradient(135deg, #10b981, #059669);
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(16, 185, 129, 0.4);
+}
+
+.ticket-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+.ticket-content {
+  position: relative;
+  z-index: 1;
+}
+
+.ticket-price {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.ticket-note {
+  font-size: 16px;
+  opacity: 0.95;
+  max-width: 500px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+/* ===== NOTICE SECTION ===== */
+.notice-list {
+  display: grid;
+  gap: 16px;
+}
+
+.notice-item {
+  background: linear-gradient(135deg, #e9d5ff, #f3e8ff);
+  border-radius: 16px;
+  padding: 24px 28px;
+  border: 2px solid #a855f7;
+  border-left: 6px solid #9333ea;
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3);
+}
+
+.notice-text {
+  font-size: 15px;
+  color: #1e293b;
+  line-height: 1.6;
+}
+
+/* ===== CLUB INTRODUCTION SECTION ===== */
+.club-intro-card {
+  background: linear-gradient(135deg, #fef3c7, #ffffff);
+  border: 2px solid #fbbf24;
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 8px 24px rgba(251, 191, 36, 0.3);
+}
+
+.club-description {
+  font-size: 16px;
+  color: #1e293b;
+  margin-bottom: 40px;
+  line-height: 1.8;
+  font-weight: 600;
+}
+
+.club-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.club-photo-item {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(251, 146, 60, 0.4);
+  border: 3px solid #fb923c;
+}
+
+.club-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.club-photo:hover {
+  transform: scale(1.05);
+}
+
+.club-achievements {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.achievement-item {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  border: 2px solid #fbbf24;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(251, 191, 36, 0.3);
+}
+
+.achievement-year {
+  font-size: 14px;
+  color: #92400e;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.achievement-title {
+  font-size: 16px;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.achievement-award {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #f59e0b, #ea580c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 2px;
+}
+
+.club-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 32px;
+}
+
+.club-stat {
+  text-align: center;
+  padding: 24px;
+  background: linear-gradient(135deg, #ddd6fe, #ede9fe);
+  border-radius: 16px;
+  border: 2px solid #8b5cf6;
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.3);
+}
+
+.club-stat-label {
+  font-size: 14px;
+  color: #6b21a8;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.club-stat-number {
+  font-size: 36px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #8b5cf6, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== RECRUIT SECTION ===== */
+.recruit-card {
+  background: linear-gradient(135deg, #fecdd3, #fda4af);
+  border: 2px solid #f43f5e;
+  border-radius: 24px;
+  padding: 48px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(244, 63, 94, 0.3);
+}
+
+.recruit-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+  color: #1e293b;
+}
+
+.recruit-description {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.8;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #fef9e7;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 48px 24px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #64748b;
+  letter-spacing: 1px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    padding: 24px;
+    gap: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+  }
+
+  .nav-links.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-links li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 16px 0;
+    font-size: 16px;
+  }
+
+  .hero-title {
+    font-size: 28px;
+    line-height: 1.4;
+  }
+
+  .hero-subtitle {
+    font-size: 11px;
+    letter-spacing: 2px;
+  }
+
+  .hero-date {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .logo-badge {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+  }
+
+  section {
+    padding: 60px 0;
+  }
+
+  .container {
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .section-label {
+    font-size: 11px;
+  }
+
+  .section-description {
+    font-size: 14px;
+  }
+
+  .survey-intro,
+  .survey-form {
+    padding: 28px 20px;
+  }
+
+  .info-grid,
+  .cast-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .info-card {
+    padding: 24px;
+  }
+
+  .info-title {
+    font-size: 12px;
+  }
+
+  .info-content {
+    font-size: 18px;
+  }
+
+  .program-item {
+    padding: 24px;
+  }
+
+  .program-title {
+    font-size: 18px;
+  }
+
+  .program-pieces li {
+    font-size: 14px;
+  }
+
+  .cast-card {
+    padding: 28px;
+  }
+
+  .cast-photo {
+    width: 160px;
+    height: 160px;
+  }
+
+  .guest-card .cast-photo {
+    width: 200px;
+    height: 200px;
+  }
+
+  .cast-name {
+    font-size: 22px;
+  }
+
+  .guest-card .cast-name {
+    font-size: 28px;
+  }
+
+  .ticket-card {
+    padding: 32px 20px;
+  }
+
+  .ticket-price {
+    font-size: 32px;
+  }
+
+  .ticket-note {
+    font-size: 14px;
+  }
+
+  .notice-item {
+    padding: 20px;
+  }
+
+  .notice-text {
+    font-size: 14px;
+  }
+
+  .club-intro-card {
+    padding: 28px 20px;
+  }
+
+  .club-description {
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+
+  .club-achievements {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .achievement-item {
+    padding: 20px;
+  }
+
+  .achievement-title {
+    font-size: 15px;
+  }
+
+  .achievement-award {
+    font-size: 24px;
+  }
+
+  .club-stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .club-stat {
+    padding: 20px;
+  }
+
+  .club-stat-number {
+    font-size: 28px;
+  }
+
+  .club-photos {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .recruit-card {
+    padding: 28px 20px;
+  }
+
+  .recruit-title {
+    font-size: 24px;
+  }
+
+  .recruit-description {
+    font-size: 14px;
+  }
+
+  footer {
+    padding: 32px 20px;
+  }
+
+  .footer-text {
+    font-size: 13px;
+  }
+
+  .hero-bg {
+    background-size: cover;
+    background-position: center center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ナビゲーション -->
+<nav class="nav">
+  <div class="nav-content">
+    <div class="nav-logo">元岡中学校吹奏楽部</div>
+    <div class="nav-toggle" onclick="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#survey" onclick="closeMenu()">アンケートページ</a></li>
+      <li><a href="#club" onclick="closeMenu()">部活動紹介</a></li>
+      <li><a href="#info" onclick="closeMenu()">公演情報</a></li>
+      <li><a href="#program" onclick="closeMenu()">プログラム</a></li>
+      <li><a href="#advisors" onclick="closeMenu()">顧問紹介</a></li>
+      <li><a href="#ticket" onclick="closeMenu()">チケット</a></li>
+      <li><a href="#notice" onclick="closeMenu()">注意事項</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Fixed background image -->
+<div class="hero-bg"></div>
+
+<!-- ヒーローセクション -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="logo-badge">
+      <img src="https://github.com/motooka-suisougaku/suisougaku-Home-page/blob/main/school_logo.png?raw=true" alt="元岡中学校 校章">
+    </div>
+    <p class="hero-subtitle">Survey / Questionnaire</p>
+    <h1 class="hero-title">福岡市立元岡中学校<br>吹奏楽部 定期演奏会<br>アンケートページ</h1>
+    <div class="hero-date">2026.3.21</div>
+  </div>
+  <div class="scroll-indicator">
+    <span></span>
+  </div>
+</section>
+
+<!-- Content wrapper with white background that scrolls over parallax -->
+<div class="content-wrapper">
+
+<!-- アンケート -->
+<section id="survey">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Survey</div>
+      <h2 class="section-title">アンケートにご協力ください</h2>
+    </div>
+
+    <div class="survey-intro">
+      <p>本日は定期演奏会にご来場いただき、誠にありがとうございました。</p>
+      <p>皆さまの温かい拍手と応援が、私たちの音楽活動の大きな励みとなっています。</p>
+      <p>今後の活動向上のため、ぜひアンケートにご協力ください。</p>
+    </div>
+
+    <div class="survey-form">
+      <div class="form-note">
+        <strong>※ アンケート回答時の注意事項</strong><br>
+        必ず回答を終えた後、「回答を送信」ボタンを押してください。<br>
+        Please make sure to press the "Send" button after completing all questions.
+      </div>
+
+      <form id="surveyForm">
+        <div class="form-group">
+          <label class="form-label" for="name">お名前(任意)</label>
+          <span class="form-sublabel">差し支えなければご記入ください / If you don't mind, please enter your name</span>
+          <input type="text" id="name" placeholder="例:元岡 太郎">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="age">年代 <span style="color: #ef4444;">*</span></label>
+          <span class="form-sublabel">Age Group</span>
+          <select id="age" required>
+            <option value="">選択してください / Please select</option>
+            <option>10代</option>
+            <option>20代</option>
+            <option>30代</option>
+            <option>40代</option>
+            <option>50代</option>
+            <option>60代以上</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="satisfaction">演奏会の満足度 <span style="color: #ef4444;">*</span></label>
+          <span class="form-sublabel">Satisfaction with the concert</span>
+          <select id="satisfaction" required>
+            <option value="">選択してください / Please select</option>
+            <option>とても満足</option>
+            <option>満足</option>
+            <option>普通</option>
+            <option>やや不満</option>
+            <option>不満</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="comment">ご感想・ご意見(任意)</label>
+          <span class="form-sublabel">Comments or Feedback</span>
+          <textarea id="comment" rows="5" placeholder="自由にご記入ください / Please write freely"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="source">演奏会を何でお知りになりましたか? <span style="color: #ef4444;">*</span></label>
+          <span class="form-sublabel">How did you hear about this concert?</span>
+          <select id="source" required>
+            <option value="">選択してください / Please select</option>
+            <option>学校からの案内</option>
+            <option>団員からの案内</option>
+            <option>ポスター・チラシ</option>
+            <option>知人・家族から</option>
+            <option>学校・団体のWebサイト</option>
+            <option>SNS</option>
+            <option>その他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="role">あなたのお立場 <span style="color: #ef4444;">*</span></label>
+          <span class="form-sublabel">Please tell us your role</span>
+          <select id="role" required>
+            <option value="">選択してください / Please select</option>
+            <option>生徒</option>
+            <option>保護者</option>
+            <option>教職員</option>
+            <option>卒業生</option>
+            <option>地域の方</option>
+            <option>その他</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="area">お住まいの地域 <span style="color: #ef4444;">*</span></label>
+          <span class="form-sublabel">Area where you live</span>
+          <select id="area" required>
+            <option value="">選択してください / Please select</option>
+            <option>福岡市西区</option>
+            <option>福岡市内(西区以外)</option>
+            <option>福岡市外(福岡県内)</option>
+            <option>福岡県外</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-button">回答を送信 / SEND</button>
+        <p class="submit-note">※送信ボタンを押すと回答が記録されます</p>
+
+        <div class="loading" id="loading">
+          <span class="spinner"></span> 送信中です…
+        </div>
+      </form>
+
+      <div class="complete" id="completeMessage">
+        <div class="complete-icon">✓</div>
+        <p style="font-size: 24px; font-weight: 700; color: #8b5cf6;">ご回答ありがとうございました</p>
+        <p>回答は正常に送信されました。</p>
+        <p>またのご来場を心よりお待ちしております。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 部活動紹介 -->
+<section id="club" style="background: rgba(255, 255, 255, 0.02);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">About Us</div>
+      <h2 class="section-title">部活動紹介</h2>
+    </div>
+
+    <div class="club-intro-card">
+      <p class="club-description">
+        元岡中学校吹奏楽部は、音楽を通じて仲間との絆を深め、技術を磨き、感動を届けることを目指して日々活動しています。<br>
+        基礎、感謝、行動の3Kをスローガンとし県大会金賞、九州大会出場に向け日々基礎練習などに励んでいます。<br>
+        部員一人一人に個性があり全員で団結して音を奏でています。
+      </p>
+
+      <div class="club-photos">
+        <div class="club-photo-item">
+          <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/syuugousyasinfukuokakokusaikaigizyou.jpg" alt="福岡国際会議場での集合写真" class="club-photo">
+        </div>
+        <div class="club-photo-item">
+          <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/syuugousyasinitobunkakaikan.jpg" alt="糸島文化会館での集合写真" class="club-photo">
+        </div>
+        <div class="club-photo-item">
+          <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/syuugousyasinitininennsei.jpg" alt="2年生集合写真" class="club-photo">
+        </div>
+      </div>
+
+      <div class="club-achievements">
+        <div class="achievement-item">
+          <div class="achievement-year">2024年</div>
+          <div class="achievement-title">九州吹奏楽コンクール</div>
+          <div class="achievement-award">銀賞</div>
+        </div>
+        <div class="achievement-item">
+          <div class="achievement-year">2025年</div>
+          <div class="achievement-title">福岡県吹奏楽コンクール</div>
+          <div class="achievement-award">銀賞</div>
+        </div>
+        <div class="achievement-item">
+          <div class="achievement-year">2025年</div>
+          <div class="achievement-title">サックスアンサンブルコンテスト支部大会</div>
+          <div class="achievement-award">金賞</div>
+        </div>
+      </div>
+
+      <div class="club-stats">
+        <div class="club-stat">
+          <div class="club-stat-label">1年生</div>
+          <div class="club-stat-number">21名</div>
+        </div>
+        <div class="club-stat">
+          <div class="club-stat-label">2年生</div>
+          <div class="club-stat-number">23名</div>
+        </div>
+        <div class="club-stat">
+          <div class="club-stat-label">3年生</div>
+          <div class="club-stat-number">25名</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 部員募集 -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Join Us</div>
+      <h2 class="section-title" style="font-size: 44px; font-weight: 800;">部員募集中!</h2>
+    </div>
+
+    <div class="recruit-card">
+      <h3 class="recruit-title">一緒に音楽を楽しみませんか</h3>
+      <p class="recruit-description">楽譜は読めなくてOK。リズムに乗れなくても大丈夫。音楽が好きな人はもちろん、ちょっと興味があるだけの方も大歓迎!私たちと一緒に、楽しい部活動の時間を過ごしましょう。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 公演情報 -->
+<section id="info" style="background: rgba(255, 255, 255, 0.02);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Event Information</div>
+      <h2 class="section-title">公演情報</h2>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="info-title">Date</div>
+        <div class="info-content">2026年3月21日(土)</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">Venue</div>
+        <div class="info-content">元岡中学校 体育館</div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-title">Time</div>
+        <div class="info-content">開場 13:30 / 開演 14:00</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- プログラム -->
+<section id="program">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Program</div>
+      <h2 class="section-title">演奏プログラム</h2>
+      <p class="section-description">3部構成でお届けする、多彩な音楽の世界をお楽しみください</p>
+    </div>
+
+    <div class="program-list">
+      <div class="program-item">
+        <div class="program-number">Part 1</div>
+        <h3 class="program-title">シンフォニックステージ</h3>
+        <ul class="program-pieces">
+          <li>GRよりシンフォニックセレクション</li>
+          <li>ほか</li>
+        </ul>
+      </div>
+
+      <div class="program-item">
+        <div class="program-number">Part 2</div>
+        <h3 class="program-title">ポップスステージ</h3>
+        <ul class="program-pieces">
+          <li>We Are Confidence Man</li>
+          <li>ほか</li>
+        </ul>
+      </div>
+
+      <div class="program-item">
+        <div class="program-number">Part 3</div>
+        <h3 class="program-title">合同ステージ</h3>
+        <ul class="program-pieces">
+          <li>宝島</li>
+          <li>ほか</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 顧問紹介 -->
+<section id="advisors" style="background: rgba(255, 255, 255, 0.02);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Advisors</div>
+      <h2 class="section-title">顧問紹介</h2>
+    </div>
+
+    <div class="cast-grid">
+      <div class="cast-card">
+        <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/kishidamasaya.jpg" alt="岸田 昌也" class="cast-photo">
+        <div class="cast-role">Advisor / Conductor</div>
+        <div class="cast-name">岸田 昌也</div>
+      </div>
+
+      <div class="cast-card">
+        <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/takayama.jpg" alt="高山 遥香" class="cast-photo">
+        <div class="cast-role">Advisor</div>
+        <div class="cast-name">高山 遥香</div>
+      </div>
+
+      <div class="cast-card">
+        <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/shimizudai.jpg" alt="清水 大" class="cast-photo">
+        <div class="cast-role">Advisor</div>
+        <div class="cast-name">清水 大</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ゲスト -->
+<section id="guest">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Guest</div>
+      <h2 class="section-title">ゲスト</h2>
+    </div>
+
+    <div class="guest-container">
+      <div class="cast-card guest-card">
+        <img src="https://raw.githubusercontent.com/motooka-suisougaku/suisougaku-Home-page/main/koshimoto.jpg" alt="越本 龍二" class="cast-photo">
+        <div class="cast-role">External Instructor</div>
+        <div class="cast-name">越本 龍二</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- チケット -->
+<section id="ticket" style="background: rgba(255, 255, 255, 0.02);">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Ticket</div>
+      <h2 class="section-title">入場について</h2>
+    </div>
+
+    <div class="ticket-card">
+      <div class="ticket-content">
+        <div class="ticket-price">入場無料</div>
+        <p class="ticket-note">チケットは元岡中学校吹奏楽部員からお受け取りください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 注意事項 -->
+<section id="notice">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Notice</div>
+      <h2 class="section-title">ご来場の皆さまへ</h2>
+    </div>
+
+    <div class="notice-list">
+      <div class="notice-item">
+        <div class="notice-text">写真・動画撮影は可能ですが著作権保護およびプライバシー配慮のため、SNS等へのアップロードなどはおやめください</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">フラッシュの使用は演奏および周囲のお客様のご迷惑となりますので、おやめください</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">演奏中の客席の出入り、ならびに客席内でのお食事はご遠慮ください</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">学校内は全面禁煙となっております</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">車でのご来場はご遠慮ください</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">携帯電話をお持ちのお客様は、着信音や操作音が鳴らないよう、マナーモードなど音の出ない設定へのご協力をお願いいたします</div>
+      </div>
+      <div class="notice-item">
+        <div class="notice-text">ソロ後の拍手は演奏の妨げになりますので、後ほどソロ演奏者の表彰の際に拍手をお願いいたします</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- End content-wrapper -->
+
+<!-- フッター -->
+<footer>
+  <div class="footer-content">
+    <div style="text-align: center; padding-bottom: 24px; font-size: 32px; font-weight: 700; color: #1e293b; letter-spacing: 2px;">
+      ご来場ありがとうございました
+    </div>
+    <p class="footer-text">© 2026 福岡市立元岡中学校 吹奏楽部</p>
+  </div>
+</footer>
+
+<script>
+function toggleMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.querySelector('.nav-toggle');
+  navLinks.classList.toggle('active');
+  navToggle.classList.toggle('active');
+}
+
+function closeMenu() {
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.querySelector('.nav-toggle');
+  navLinks.classList.remove('active');
+  navToggle.classList.remove('active');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', function(event) {
+  const nav = document.querySelector('.nav');
+  const navLinks = document.getElementById('navLinks');
+  const navToggle = document.querySelector('.nav-toggle');
+  
+  if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
+    navLinks.classList.remove('active');
+    navToggle.classList.remove('active');
+  }
+});
+
+// Parallax scrolling effect
+let ticking = false;
+window.addEventListener('scroll', function() {
+  if (!ticking) {
+    window.requestAnimationFrame(function() {
+      const scrolled = window.pageYOffset;
+      const heroBg = document.querySelector('.hero-bg');
+      
+      if (heroBg) {
+        heroBg.style.transform = `translateY(${scrolled * -0.3}px)`;
+      }
+      
+      ticking = false;
+    });
+    ticking = true;
+  }
+});
+
+// Scroll-triggered section animations
+const observerOptions = {
+  threshold: 0.15,
+  rootMargin: '0px 0px -100px 0px'
+};
+
+const observer = new IntersectionObserver(function(entries) {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+// Observe all sections except hero
+document.addEventListener('DOMContentLoaded', function() {
+  const sections = document.querySelectorAll('section:not(.hero)');
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
+
+// Survey form submission
+const form = document.getElementById("surveyForm");
+const loading = document.getElementById("loading");
+const complete = document.getElementById("completeMessage");
+
+form.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  form.querySelector("button").disabled = true;
+  loading.style.display = "block";
+
+  const data = {
+    name: document.getElementById("name").value,
+    age: document.getElementById("age").value,
+    satisfaction: document.getElementById("satisfaction").value,
+    comment: document.getElementById("comment").value,
+    source: document.getElementById("source").value,
+    area: document.getElementById("area").value,
+    role: document.getElementById("role").value
+  };
+
+  fetch("https://script.google.com/macros/s/AKfycbz1jfpK1_ryITjTeS3V-EllEzMrI-yxQCr3JmKJi8feUXv95yZTVFA8P0jyNcDu3aA/exec", {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+  })
+  .then(() => {
+    loading.style.display = "none";
+    form.style.display = "none";
+    complete.style.display = "block";
+
+    complete.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+  })
+  .catch(() => {
+    loading.style.display = "none";
+    alert("送信に失敗しました。通信環境が不安定または接続されていない可能性があります。通信環境を確認してからもう一度回答を送信ボタンを押してください。それでも解決しない場合はお近くの生徒またはスタッフにお声掛けください。");
+    form.querySelector("button").disabled = false;
+  });
+});
+</script>
+
+</body>
+</html>
